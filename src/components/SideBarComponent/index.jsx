@@ -4,6 +4,7 @@ import { HiArchive, HiArrowDown, HiArrowSmRight, HiBadgeCheck, HiChartPie, HiChe
 import { FaCartArrowDown, FaCartPlus, FaHandshake, FaMoneyCheckAlt, FaPeopleArrows, FaShoppingBasket, FaShoppingCart } from 'react-icons/fa';
 import { FaBuildingCircleCheck } from 'react-icons/fa6';
 import { TopBarComponent } from '../TopBarComponent';
+import { NavLink } from 'react-router-dom';
 
 const SideBarComponent = () => {
     return (
@@ -13,10 +14,10 @@ const SideBarComponent = () => {
                 <div className="h-full px-3 py-4 overflow-y-auto">
                     <ul className="space-y-2 font-medium">
                         <li>
-                            <a href="#" className="flex items-center p-2 text-slate-300 rounded-lg dark:text-white hover:bg-gray-100/20 dark:hover:bg-gray-700 group">
+                            <NavLink to="/" className="flex items-center p-2 text-slate-300 rounded-lg dark:text-white hover:bg-gray-100/20 dark:hover:bg-gray-700 group">
                                 <HiChartPie size={26} className=" text-slate-300 transition duration-75 dark:text-gray-400 group-hover:text-slate-300 dark:group-hover:text-white" />
                                 <span className="ml-3">Dashboard</span>
-                            </a>
+                            </NavLink>
                         </li>
                         <li>
                             <button type="button" className="flex items-center w-full p-2 text-base text-slate-300 transition duration-75 rounded-lg group hover:bg-gray-100/20 dark:text-white dark:hover:bg-gray-700" aria-controls="inventory" data-collapse-toggle="inventory">
@@ -26,13 +27,13 @@ const SideBarComponent = () => {
                             </button>
                             <ul id="inventory" className="hidden py-2 space-y-2">
                                 <li>
-                                    <a href="sales" className="flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100/20 dark:text-white dark:hover:bg-gray-700">Sales</a>
+                                    <NavLink to="brands" className="flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100/20 dark:text-white dark:hover:bg-gray-700">Brands</NavLink>
                                 </li>
                                 <li>
-                                    <a href="refunds" className="flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100/20 dark:text-white dark:hover:bg-gray-700">Refunds</a>
+                                    <NavLink to="categories" className="flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100/20 dark:text-white dark:hover:bg-gray-700">Caregories</NavLink>
                                 </li>
                                 <li>
-                                    <a href="shippings" className="flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100/20 dark:text-white dark:hover:bg-gray-700">Shippings</a>
+                                    <NavLink to="products" className="flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100/20 dark:text-white dark:hover:bg-gray-700">Products</NavLink>
                                 </li>
                             </ul>
                         </li>
