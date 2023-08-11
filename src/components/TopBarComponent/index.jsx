@@ -1,10 +1,11 @@
 import React from 'react'
 
 import { HiMenuAlt2 } from 'react-icons/hi';
+import { Link } from 'react-router-dom';
 
 export const TopBarComponent = () => {
     return (
-        <nav className="fixed top-0 z-50 w-full bg-gradient-to-b from-indigo-800 to-indigo-700  border-b border-indigo-700 dark:from-indigo-950 dark:to-indigo-950 dark:border-indigo-950">
+        <nav className="fixed top-0 z-50 w-full bg-gradient-to-b from-indigo-900 to-indigo-800  border-b border-indigo-900 shadow-md dark:from-indigo-950 dark:to-indigo-950 dark:border-indigo-950">
             <div className="px-3 py-3 lg:px-5 lg:pl-3">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center justify-start">
@@ -12,17 +13,17 @@ export const TopBarComponent = () => {
                             <span className="sr-only">Open sidebar</span>
                             <HiMenuAlt2 />
                         </button>
-                        <a href="/" className="flex ml-2 md:mr-24">
-                            <img src="shopify.png" className="h-8 mr-3" alt="FlowBite Logo" />
+                        <Link to="/" className="flex ml-2 md:mr-24">
+                            <img src="/logo.png" className="h-10 mr-3" alt="FlowBite Logo" />
                             <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap text-slate-300 dark:text-white">Retail ERP</span>
-                        </a>
+                        </Link>
                     </div>
                     <div className="flex items-center">
                         <div className="flex items-center ml-3">
                             <div>
                                 <button type="button" className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
                                     <span className="sr-only">Open user menu</span>
-                                    <img className="w-8 h-8 rounded-full" src="wan-qodir.jpeg" alt="user photo" />
+                                    <img className="w-8 h-8 rounded-full" src="/wan-qodir.jpeg" alt="user photo" />
                                 </button>
                             </div>
                             <div className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-user">

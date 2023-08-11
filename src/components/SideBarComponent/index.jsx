@@ -9,7 +9,7 @@ const SideBarComponent = () => {
     return (
         <>
             <TopBarComponent />
-            <aside id="sidebar-multi-level-sidebar" className="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-gradient-to-b from-indigo-700 from-10% via-blue-700 via-30% to-teal-500 to-90% border-r border-gray-200 sm:translate-x-0 dark:from-indigo-950 dark:via-blue-950 dark:to-teal-700 dark:border-gray-700" aria-label="Sidebar">
+            <aside id="sidebar-multi-level-sidebar" className="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white bg-gradient-to-b from-indigo-800 from-10% via-blue-800 via-50% to-sky-700 to-90% border-r border-gray-200 sm:translate-x-0 dark:from-indigo-950 dark:via-blue-950 dark:to-teal-700 dark:border-gray-700" aria-label="Sidebar">
                 <div className="h-full px-3 py-4 overflow-y-auto">
                     <ul className="space-y-2 font-medium">
                         <li>
@@ -24,33 +24,33 @@ const SideBarComponent = () => {
                                 <span className="flex-1 ml-3 text-left whitespace-nowrap">Inventory</span>
                                 <HiChevronDown />
                             </button>
-                            <ul id="inventory" className="hidden py-2 space-y-2">
+                            <ul id="inventory" className='hidden py-2 space-y-2'>
                                 <li>
-                                    <NavLink to="brands" className="flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100/20 dark:text-white dark:hover:bg-gray-700">Brands</NavLink>
+                                    <NavLink to="inventory/brands" className={({ isActive }) => isActive ? "flex items-center w-full p-2 text-slate-300 bg-indigo-200/30 transition duration-75 rounded-lg pl-11 group  dark:text-white dark:hover:bg-gray-500" : "flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-500/50 dark:text-white dark:hover:bg-gray-700"}>Brands</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="categories" className="flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100/20 dark:text-white dark:hover:bg-gray-700">Caregories</NavLink>
+                                    <NavLink to="inventory/categories" className={({ isActive }) => isActive ? "flex items-center w-full p-2 text-slate-300 bg-indigo-200/30 transition duration-75 rounded-lg pl-11 group  dark:text-white dark:hover:bg-gray-500" : "flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-500/50 dark:text-white dark:hover:bg-gray-700"}>Caregories</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="products" className="flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100/20 dark:text-white dark:hover:bg-gray-700">Products</NavLink>
+                                    <NavLink to="inventory/products" className={({ isActive }) => isActive ? "flex items-center w-full p-2 text-slate-300 bg-indigo-200/30 transition duration-75 rounded-lg pl-11 group  dark:text-white dark:hover:bg-gray-500" : "flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-500/50 dark:text-white dark:hover:bg-gray-700"}>Products</NavLink>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <button type="button" className="flex items-center w-full p-2 text-base text-slate-300 transition duration-75 rounded-lg group hover:bg-gray-100/20 dark:text-white dark:hover:bg-gray-700" aria-controls="POS" data-collapse-toggle="POS">
+                            <button type="button" className="flex items-center w-full p-2 text-base text-slate-300 transition duration-75 rounded-lg group hover:bg-gray-100/20 dark:text-white dark:hover:bg-gray-700" aria-controls="pos" data-collapse-toggle="pos">
                                 <FaShoppingBasket size={26} className=" text-slate-300 transition duration-75 dark:text-gray-400 group-hover:text-slate-300 dark:group-hover:text-white" />
                                 <span className="flex-1 ml-3 text-left whitespace-nowrap">Point Of Sale</span>
                                 <HiChevronDown />
                             </button>
-                            <ul id="POS" className="hidden py-2 space-y-2">
+                            <ul id="pos" className="hidden py-2 space-y-2">
                                 <li>
-                                    <a href="sales" className="flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100/20 dark:text-white dark:hover:bg-gray-700">Sales</a>
+                                    <NavLink to="pos/sales" className={({ isActive }) => isActive ? "flex items-center w-full p-2 text-slate-300 bg-indigo-200/30 transition duration-75 rounded-lg pl-11 group  dark:text-white dark:hover:bg-gray-500" : "flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-500/50 dark:text-white dark:hover:bg-gray-700"}>Sales</NavLink>
                                 </li>
                                 <li>
-                                    <a href="refunds" className="flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100/20 dark:text-white dark:hover:bg-gray-700">Refunds</a>
+                                    <NavLink to="pos/refunds" className={({ isActive }) => isActive ? "flex items-center w-full p-2 text-slate-300 bg-indigo-200/30 transition duration-75 rounded-lg pl-11 group  dark:text-white dark:hover:bg-gray-500" : "flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-500/50 dark:text-white dark:hover:bg-gray-700"}>Refunds</NavLink>
                                 </li>
                                 <li>
-                                    <a href="shippings" className="flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100/20 dark:text-white dark:hover:bg-gray-700">Shippings</a>
+                                    <NavLink to="pos/shippings" className={({ isActive }) => isActive ? "flex items-center w-full p-2 text-slate-300 bg-indigo-200/30 transition duration-75 rounded-lg pl-11 group  dark:text-white dark:hover:bg-gray-500" : "flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-500/50 dark:text-white dark:hover:bg-gray-700"}>Shippings</NavLink>
                                 </li>
                             </ul>
                         </li>
@@ -60,15 +60,15 @@ const SideBarComponent = () => {
                                 <span className="flex-1 ml-3 text-left whitespace-nowrap">Purchasing</span>
                                 <HiChevronDown />
                             </button>
-                            <ul id="purchasing" className="hidden py-2 space-y-2">
+                            <ul id="purchasing" className='hidden py-2 space-y-2'>
                                 <li>
-                                    <a href="sales" className="flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100/20 dark:text-white dark:hover:bg-gray-700">Sales</a>
+                                    <NavLink to="sales" className={({ isActive }) => isActive ? "flex items-center w-full p-2 text-slate-300 bg-indigo-200/30 transition duration-75 rounded-lg pl-11 group  dark:text-white dark:hover:bg-gray-500" : "flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-500/50 dark:text-white dark:hover:bg-gray-700"}>Sales</NavLink>
                                 </li>
                                 <li>
-                                    <a href="refunds" className="flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100/20 dark:text-white dark:hover:bg-gray-700">Refunds</a>
+                                    <NavLink to="refunds" className={({ isActive }) => isActive ? "flex items-center w-full p-2 text-slate-300 bg-indigo-200/30 transition duration-75 rounded-lg pl-11 group  dark:text-white dark:hover:bg-gray-500" : "flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-500/50 dark:text-white dark:hover:bg-gray-700"}>Refunds</NavLink>
                                 </li>
                                 <li>
-                                    <a href="shippings" className="flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100/20 dark:text-white dark:hover:bg-gray-700">Shippings</a>
+                                    <NavLink to="shippings" className={({ isActive }) => isActive ? "flex items-center w-full p-2 text-slate-300 bg-indigo-200/30 transition duration-75 rounded-lg pl-11 group  dark:text-white dark:hover:bg-gray-500" : "flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-500/50 dark:text-white dark:hover:bg-gray-700"}>Shippings</NavLink>
                                 </li>
                             </ul>
                         </li>
@@ -78,15 +78,15 @@ const SideBarComponent = () => {
                                 <span className="flex-1 ml-3 text-left whitespace-nowrap">Customers</span>
                                 <HiChevronDown />
                             </button>
-                            <ul id="customers" className="hidden py-2 space-y-2">
+                            <ul id="customers" className='hidden py-2 space-y-2'>
                                 <li>
-                                    <a href="sales" className="flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100/20 dark:text-white dark:hover:bg-gray-700">Sales</a>
+                                    <NavLink to="sales" className={({ isActive }) => isActive ? "flex items-center w-full p-2 text-slate-300 bg-indigo-200/30 transition duration-75 rounded-lg pl-11 group  dark:text-white dark:hover:bg-gray-500" : "flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-500/50 dark:text-white dark:hover:bg-gray-700"}>Sales</NavLink>
                                 </li>
                                 <li>
-                                    <a href="refunds" className="flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100/20 dark:text-white dark:hover:bg-gray-700">Refunds</a>
+                                    <NavLink to="refunds" className={({ isActive }) => isActive ? "flex items-center w-full p-2 text-slate-300 bg-indigo-200/30 transition duration-75 rounded-lg pl-11 group  dark:text-white dark:hover:bg-gray-500" : "flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-500/50 dark:text-white dark:hover:bg-gray-700"}>Refunds</NavLink>
                                 </li>
                                 <li>
-                                    <a href="shippings" className="flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100/20 dark:text-white dark:hover:bg-gray-700">Shippings</a>
+                                    <NavLink to="shippings" className={({ isActive }) => isActive ? "flex items-center w-full p-2 text-slate-300 bg-indigo-200/30 transition duration-75 rounded-lg pl-11 group  dark:text-white dark:hover:bg-gray-500" : "flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-500/50 dark:text-white dark:hover:bg-gray-700"}>Shippings</NavLink>
                                 </li>
                             </ul>
                         </li>
@@ -96,15 +96,15 @@ const SideBarComponent = () => {
                                 <span className="flex-1 ml-3 text-left whitespace-nowrap">Finance</span>
                                 <HiChevronDown />
                             </button>
-                            <ul id="finance" className="hidden py-2 space-y-2">
+                            <ul id="finance" className='hidden py-2 space-y-2'>
                                 <li>
-                                    <a href="sales" className="flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100/20 dark:text-white dark:hover:bg-gray-700">Sales</a>
+                                    <NavLink to="sales" className={({ isActive }) => isActive ? "flex items-center w-full p-2 text-slate-300 bg-indigo-200/30 transition duration-75 rounded-lg pl-11 group  dark:text-white dark:hover:bg-gray-500" : "flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-500/50 dark:text-white dark:hover:bg-gray-700"}>Sales</NavLink>
                                 </li>
                                 <li>
-                                    <a href="refunds" className="flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100/20 dark:text-white dark:hover:bg-gray-700">Refunds</a>
+                                    <NavLink to="refunds" className={({ isActive }) => isActive ? "flex items-center w-full p-2 text-slate-300 bg-indigo-200/30 transition duration-75 rounded-lg pl-11 group  dark:text-white dark:hover:bg-gray-500" : "flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-500/50 dark:text-white dark:hover:bg-gray-700"}>Refunds</NavLink>
                                 </li>
                                 <li>
-                                    <a href="shippings" className="flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100/20 dark:text-white dark:hover:bg-gray-700">Shippings</a>
+                                    <NavLink to="shippings" className={({ isActive }) => isActive ? "flex items-center w-full p-2 text-slate-300 bg-indigo-200/30 transition duration-75 rounded-lg pl-11 group  dark:text-white dark:hover:bg-gray-500" : "flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-500/50 dark:text-white dark:hover:bg-gray-700"}>Shippings</NavLink>
                                 </li>
                             </ul>
                         </li>
@@ -114,15 +114,15 @@ const SideBarComponent = () => {
                                 <span className="flex-1 ml-3 text-left whitespace-nowrap">Marketing</span>
                                 <HiChevronDown />
                             </button>
-                            <ul id="marketing" className="hidden py-2 space-y-2">
+                            <ul id="marketing" className='hidden py-2 space-y-2'>
                                 <li>
-                                    <a href="sales" className="flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100/20 dark:text-white dark:hover:bg-gray-700">Sales</a>
+                                    <NavLink to="sales" className={({ isActive }) => isActive ? "flex items-center w-full p-2 text-slate-300 bg-indigo-200/30 transition duration-75 rounded-lg pl-11 group  dark:text-white dark:hover:bg-gray-500" : "flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-500/50 dark:text-white dark:hover:bg-gray-700"}>Sales</NavLink>
                                 </li>
                                 <li>
-                                    <a href="refunds" className="flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100/20 dark:text-white dark:hover:bg-gray-700">Refunds</a>
+                                    <NavLink to="refunds" className={({ isActive }) => isActive ? "flex items-center w-full p-2 text-slate-300 bg-indigo-200/30 transition duration-75 rounded-lg pl-11 group  dark:text-white dark:hover:bg-gray-500" : "flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-500/50 dark:text-white dark:hover:bg-gray-700"}>Refunds</NavLink>
                                 </li>
                                 <li>
-                                    <a href="shippings" className="flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100/20 dark:text-white dark:hover:bg-gray-700">Shippings</a>
+                                    <NavLink to="shippings" className={({ isActive }) => isActive ? "flex items-center w-full p-2 text-slate-300 bg-indigo-200/30 transition duration-75 rounded-lg pl-11 group  dark:text-white dark:hover:bg-gray-500" : "flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-500/50 dark:text-white dark:hover:bg-gray-700"}>Shippings</NavLink>
                                 </li>
                             </ul>
                         </li>
@@ -132,15 +132,15 @@ const SideBarComponent = () => {
                                 <span className="flex-1 ml-3 text-left whitespace-nowrap">Human Resource</span>
                                 <HiChevronDown />
                             </button>
-                            <ul id="hr" className="hidden py-2 space-y-2">
+                            <ul id="hr" className='hidden py-2 space-y-2'>
                                 <li>
-                                    <a href="sales" className="flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100/20 dark:text-white dark:hover:bg-gray-700">Sales</a>
+                                    <NavLink to="sales" className={({ isActive }) => isActive ? "flex items-center w-full p-2 text-slate-300 bg-indigo-200/30 transition duration-75 rounded-lg pl-11 group  dark:text-white dark:hover:bg-gray-500" : "flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-500/50 dark:text-white dark:hover:bg-gray-700"}>Sales</NavLink>
                                 </li>
                                 <li>
-                                    <a href="refunds" className="flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100/20 dark:text-white dark:hover:bg-gray-700">Refunds</a>
+                                    <NavLink to="refunds" className={({ isActive }) => isActive ? "flex items-center w-full p-2 text-slate-300 bg-indigo-200/30 transition duration-75 rounded-lg pl-11 group  dark:text-white dark:hover:bg-gray-500" : "flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-500/50 dark:text-white dark:hover:bg-gray-700"}>Refunds</NavLink>
                                 </li>
                                 <li>
-                                    <a href="shippings" className="flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100/20 dark:text-white dark:hover:bg-gray-700">Shippings</a>
+                                    <NavLink to="shippings" className={({ isActive }) => isActive ? "flex items-center w-full p-2 text-slate-300 bg-indigo-200/30 transition duration-75 rounded-lg pl-11 group  dark:text-white dark:hover:bg-gray-500" : "flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-500/50 dark:text-white dark:hover:bg-gray-700"}>Shippings</NavLink>
                                 </li>
                             </ul>
                         </li>
@@ -150,15 +150,15 @@ const SideBarComponent = () => {
                                 <span className="flex-1 ml-3 text-left whitespace-nowrap">Operational</span>
                                 <HiChevronDown />
                             </button>
-                            <ul id="operational" className="hidden py-2 space-y-2">
+                            <ul id="operational" className='hidden py-2 space-y-2'>
                                 <li>
-                                    <a href="sales" className="flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100/20 dark:text-white dark:hover:bg-gray-700">Sales</a>
+                                    <NavLink to="sales" className={({ isActive }) => isActive ? "flex items-center w-full p-2 text-slate-300 bg-indigo-200/30 transition duration-75 rounded-lg pl-11 group  dark:text-white dark:hover:bg-gray-500" : "flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-500/50 dark:text-white dark:hover:bg-gray-700"}>Sales</NavLink>
                                 </li>
                                 <li>
-                                    <a href="refunds" className="flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100/20 dark:text-white dark:hover:bg-gray-700">Refunds</a>
+                                    <NavLink to="refunds" className={({ isActive }) => isActive ? "flex items-center w-full p-2 text-slate-300 bg-indigo-200/30 transition duration-75 rounded-lg pl-11 group  dark:text-white dark:hover:bg-gray-500" : "flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-500/50 dark:text-white dark:hover:bg-gray-700"}>Refunds</NavLink>
                                 </li>
                                 <li>
-                                    <a href="shippings" className="flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100/20 dark:text-white dark:hover:bg-gray-700">Shippings</a>
+                                    <NavLink to="shippings" className={({ isActive }) => isActive ? "flex items-center w-full p-2 text-slate-300 bg-indigo-200/30 transition duration-75 rounded-lg pl-11 group  dark:text-white dark:hover:bg-gray-500" : "flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-500/50 dark:text-white dark:hover:bg-gray-700"}>Shippings</NavLink>
                                 </li>
                             </ul>
                         </li>

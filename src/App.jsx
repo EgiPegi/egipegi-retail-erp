@@ -7,11 +7,12 @@ import {
 import ErrorPage from './error-page';
 import Layout from './Layout';
 import { fakeAuthProvider } from './fakeAuth';
-import { Brands } from './pages/InventoryManagement/Brands';
+import Brands from './pages/InventoryManagement/Brands';
 import Categories from './pages/InventoryManagement/Categories';
 import Products from './pages/InventoryManagement/Products';
-import { initFlowbite } from "flowbite";
-import { useEffect } from 'react';
+import Sales from './pages/PointOfSale/Sales';
+import Refunds from './pages/PointOfSale/Refunds';
+import Shippings from './pages/PointOfSale/Shippings';
 
 
 let router = createBrowserRouter([
@@ -26,17 +27,40 @@ let router = createBrowserRouter([
         element: <Dashboard />,
       },
       {
-        path: "brands",
-        element: <Brands />,
+        path: 'inventory',
+        children: [
+          {
+            path: "brands",
+            element: <Brands />,
+          },
+          {
+            path: "categories",
+            element: <Categories />,
+          },
+          {
+            path: "products",
+            element: <Products />,
+          },
+        ]
       },
       {
-        path: "categories",
-        element: <Categories />,
+        path: 'pos',
+        children: [
+          {
+            path: "sales",
+            element: <Sales />,
+          },
+          {
+            path: "refunds",
+            element: <Refunds />,
+          },
+          {
+            path: "shippings",
+            element: <Shippings />,
+          },
+        ]
       },
-      {
-        path: "products",
-        element: <Products />,
-      },
+
     ]
   },
   {
@@ -50,10 +74,6 @@ let router = createBrowserRouter([
 ]);
 
 function App() {
-
-  useEffect(() => {
-    initFlowbite();
-  }); // <--- no empty array on this
 
   return (
     <RouterProvider router={router} fallbackElement={<p>Loading...</p>} />
