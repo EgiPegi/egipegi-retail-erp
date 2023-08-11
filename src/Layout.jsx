@@ -1,5 +1,4 @@
-import { Flowbite } from 'flowbite-react'
-import React, { useEffect } from 'react'
+import React from 'react'
 import SideBarComponent from './components/SideBarComponent'
 import { BreadCrumb } from './components/BreadCrumb'
 import { Outlet, useLoaderData } from 'react-router-dom'
@@ -17,7 +16,7 @@ const Layout = () => {
     console.log(username);
 
     return (
-        <Flowbite>
+        <>
             <SideBarComponent />
             <div className="p-4 sm:ml-64 dark:bg-gray-700">
                 <BreadCrumb />
@@ -26,7 +25,7 @@ const Layout = () => {
                 </div>
             </div>
 
-        </Flowbite>
+        </>
     )
 }
 

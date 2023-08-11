@@ -1,5 +1,4 @@
 import React from 'react'
-import { DarkThemeToggle, Sidebar } from 'flowbite-react';
 import { HiArchive, HiArrowDown, HiArrowSmRight, HiBadgeCheck, HiChartPie, HiCheck, HiCheckCircle, HiChevronDown, HiCollection, HiInbox, HiMenu, HiMenuAlt2, HiOutlineShoppingCart, HiShoppingBag, HiShoppingCart, HiTable, HiUser, HiUserGroup, HiViewBoards, HiViewGrid, HiViewList } from 'react-icons/hi';
 import { FaCartArrowDown, FaCartPlus, FaHandshake, FaMoneyCheckAlt, FaPeopleArrows, FaShoppingBasket, FaShoppingCart } from 'react-icons/fa';
 import { FaBuildingCircleCheck } from 'react-icons/fa6';

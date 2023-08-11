@@ -10,6 +10,8 @@ import { fakeAuthProvider } from './fakeAuth';
 import { Brands } from './pages/InventoryManagement/Brands';
 import Categories from './pages/InventoryManagement/Categories';
 import Products from './pages/InventoryManagement/Products';
+import { initFlowbite } from "flowbite";
+import { useEffect } from 'react';
 
 
 let router = createBrowserRouter([
@@ -48,6 +50,10 @@ let router = createBrowserRouter([
 ]);
 
 function App() {
+
+  useEffect(() => {
+    initFlowbite();
+  }); // <--- no empty array on this
 
   return (
     <RouterProvider router={router} fallbackElement={<p>Loading...</p>} />

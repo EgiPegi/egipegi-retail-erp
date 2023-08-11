@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { Avatar, DarkThemeToggle, Dropdown, Navbar } from 'flowbite-react';
 import { HiMenuAlt2 } from 'react-icons/hi';
 
 export const TopBarComponent = () => {
@@ -19,7 +18,6 @@ export const TopBarComponent = () => {
                         </a>
                     </div>
                     <div className="flex items-center">
-                        <DarkThemeToggle />
                         <div className="flex items-center ml-3">
                             <div>
                                 <button type="button" className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
