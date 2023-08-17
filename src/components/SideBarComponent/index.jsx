@@ -13,7 +13,7 @@ const SideBarComponent = () => {
                 <div className="h-full px-3 py-4 overflow-y-auto">
                     <ul className="space-y-2 font-medium">
                         <li>
-                            <NavLink to="/" className="flex items-center p-2 text-slate-300 rounded-lg dark:text-white hover:bg-gray-100/20 dark:hover:bg-gray-700 group">
+                            <NavLink to="/" className={({ isActive }) => isActive ? "flex items-center p-2 text-slate-300 bg-indigo-200/30 rounded-lg dark:text-white hover:bg-gray-100/20 dark:hover:bg-gray-700 group" : "flex items-center p-2 text-slate-300 rounded-lg dark:text-white hover:bg-gray-100/20 dark:hover:bg-gray-700 group"}>
                                 <HiChartPie size={26} className=" text-slate-300 transition duration-75 dark:text-gray-400 group-hover:text-slate-300 dark:group-hover:text-white" />
                                 <span className="ml-3">Dashboard</span>
                             </NavLink>

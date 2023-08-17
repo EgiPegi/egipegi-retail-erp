@@ -13,6 +13,9 @@ import Products from './pages/InventoryManagement/Products';
 import Sales from './pages/PointOfSale/Sales';
 import Refunds from './pages/PointOfSale/Refunds';
 import Shippings from './pages/PointOfSale/Shippings';
+import BrandDetail from './pages/InventoryManagement/Brands/Detail';
+import CategoryDetail from './pages/InventoryManagement/Categories/Detail';
+import ProductDetail from './pages/InventoryManagement/Products/Detail';
 
 
 let router = createBrowserRouter([
@@ -30,16 +33,28 @@ let router = createBrowserRouter([
         path: 'inventory',
         children: [
           {
-            path: "brands",
+            path: "brands/:page?",
             element: <Brands />,
           },
           {
-            path: "categories",
+            path: "brands/:slug/:page?",
+            element: <BrandDetail />,
+          },
+          {
+            path: "categories/:page?",
             element: <Categories />,
           },
           {
-            path: "products",
+            path: "categories/:slug/:page?",
+            element: <CategoryDetail />,
+          },
+          {
+            path: "products/:page?",
             element: <Products />,
+          },
+          {
+            path: "products/:slug/:page?",
+            element: <ProductDetail />,
           },
         ]
       },
@@ -47,15 +62,15 @@ let router = createBrowserRouter([
         path: 'pos',
         children: [
           {
-            path: "sales",
+            path: "sales/:page?",
             element: <Sales />,
           },
           {
-            path: "refunds",
+            path: "refunds/:page?",
             element: <Refunds />,
           },
           {
-            path: "shippings",
+            path: "shippings/:page?",
             element: <Shippings />,
           },
         ]
