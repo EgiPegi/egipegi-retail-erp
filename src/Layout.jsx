@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import SideBarComponent from './components/SideBarComponent'
 import { BreadCrumb } from './components/BreadCrumb'
-import { Outlet, useLoaderData, useLocation } from 'react-router-dom'
+import { Outlet, useLoaderData, useLocation, useNavigate } from 'react-router-dom'
 import { initFlowbite } from 'flowbite'
 
 
 
 const Layout = () => {
-    let { username } = useLoaderData();
+    let { user } = useLoaderData();
     let { pathname } = useLocation();
+    const nav = useNavigate()
 
     useEffect(() => {
-        // console.log(pathname);
+        console.log('test', user);
+        if (!user) {
+            nav('/login')
+        }
         initFlowbite();
     }, [pathname]); // <--- no empty array on this
 
