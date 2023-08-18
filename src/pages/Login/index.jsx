@@ -1,16 +1,17 @@
 import { initFlowbite } from 'flowbite';
 import React, { useEffect } from 'react'
-import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { accountService, alertService } from '../../_services';
 import { Alert } from '../../components/Alert';
 
 const Login = () => {
-    let user = useLoaderData();
+    // let user = useLoaderData();
     let { pathname } = useLocation();
     let navigate = useNavigate();
 
     useEffect(() => {
-        console.log('test', user);
+        accountService.logout();
+        // console.log('test', user);
         initFlowbite();
     }, [pathname]);
 

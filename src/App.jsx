@@ -97,14 +97,6 @@ function App() {
 
       ]
     },
-    // {
-    //   path: "/logout",
-    //   async action() {
-    //     // We signout in a "resource route" that we can hit from a fetcher.Form
-    //     accountService.logout()
-    //     return redirect("/");
-    //   }
-    // },
     {
       path: "login",
       errorElement: <ErrorPage />,

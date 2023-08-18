@@ -1,6 +1,7 @@
 import { BehaviorSubject } from "rxjs";
 
 import { fetchWrapper } from "../_helpers";
+import Cookies from "js-cookie";
 
 // const userSubject = new BehaviorSubject(null);
 const USER_STORAGE_KEY = "user";
