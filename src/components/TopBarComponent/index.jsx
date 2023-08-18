@@ -1,9 +1,16 @@
 import React from 'react'
 
 import { HiMenuAlt2 } from 'react-icons/hi';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { accountService } from '../../_services';
 
 export const TopBarComponent = () => {
+    const nav = useNavigate()
+    const logOut = () => {
+        accountService.logout()
+        nav('/login')
+        console.log('testaushkjasb')
+    }
     return (
         <nav className="fixed top-0 z-50 w-full bg-gradient-to-b from-indigo-900 to-indigo-800  border-b border-indigo-900 shadow-md dark:from-indigo-950 dark:to-indigo-950 dark:border-indigo-950">
             <div className="px-3 py-3 lg:px-5 lg:pl-3">
@@ -45,8 +52,8 @@ export const TopBarComponent = () => {
                                     <li>
                                         <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Earnings</a>
                                     </li>
-                                    <li>
-                                        <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Sign out</a>
+                                    <li onClick={logOut} className='cursor-pointer'>
+                                        <div className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Sign out</div>
                                     </li>
                                 </ul>
                             </div>

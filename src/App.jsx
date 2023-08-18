@@ -2,6 +2,7 @@ import './App.css'
 import { Dashboard } from './pages/Dashboard';
 import {
   createBrowserRouter,
+  redirect,
   RouterProvider,
 } from "react-router-dom";
 import ErrorPage from './error-page';
@@ -20,8 +21,7 @@ import { accountService } from './_services';
 import { useState } from 'react';
 import Login from './pages/Login';
 
-// attempt silent token refresh before startup
-accountService.refreshToken().finally(App);
+
 
 
 function App() {
@@ -97,14 +97,14 @@ function App() {
 
       ]
     },
-    {
-      path: "/logout",
-      async action() {
-        // We signout in a "resource route" that we can hit from a fetcher.Form
-        await fakeAuthProvider.signout();
-        return redirect("/");
-      }
-    },
+    // {
+    //   path: "/logout",
+    //   async action() {
+    //     // We signout in a "resource route" that we can hit from a fetcher.Form
+    //     accountService.logout()
+    //     return redirect("/");
+    //   }
+    // },
     {
       path: "login",
       errorElement: <ErrorPage />,

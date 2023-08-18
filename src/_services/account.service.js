@@ -2,7 +2,12 @@ import { BehaviorSubject } from "rxjs";
 
 import { fetchWrapper } from "../_helpers";
 
-const userSubject = new BehaviorSubject(null);
+// const userSubject = new BehaviorSubject(null);
+const USER_STORAGE_KEY = "user";
+const userSubject = new BehaviorSubject(
+  JSON.parse(localStorage.getItem(USER_STORAGE_KEY))
+);
+
 const baseUrl = `${import.meta.env.VITE_API_URI}/accounts`;
 
 export const accountService = {
@@ -31,6 +36,7 @@ function login(email, password) {
     .then((user) => {
       // publish user to subscribers and start timer to refresh token
       userSubject.next(user);
+      localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
       startRefreshTokenTimer();
       return user;
     });
@@ -41,6 +47,7 @@ function logout() {
   fetchWrapper.post(`${baseUrl}/revoke-token`, {});
   stopRefreshTokenTimer();
   userSubject.next(null);
+  localStorage.removeItem(USER_STORAGE_KEY);
   //   history.push("/account/login");
 }
 
@@ -48,6 +55,7 @@ function refreshToken() {
   return fetchWrapper.post(`${baseUrl}/refresh-token`, {}).then((user) => {
     // publish user to subscribers and start timer to refresh token
     userSubject.next(user);
+    localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
     startRefreshTokenTimer();
     return user;
   });
