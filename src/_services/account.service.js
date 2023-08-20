@@ -53,13 +53,20 @@ function logout() {
 }
 
 function refreshToken() {
-  return fetchWrapper.post(`${baseUrl}/refresh-token`, {}).then((user) => {
-    // publish user to subscribers and start timer to refresh token
-    userSubject.next(user);
-    localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
-    startRefreshTokenTimer();
-    return user;
-  });
+  return fetchWrapper
+    .post(`${baseUrl}/refresh-token`, {
+      refreshToken: localStorage.getItem(
+        USER_STORAGE_KEY,
+        JSON.stringify(user.refreshToken)
+      ),
+    })
+    .then((user) => {
+      // publish user to subscribers and start timer to refresh token
+      userSubject.next(user);
+      localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
+      startRefreshTokenTimer();
+      return user;
+    });
 }
 
 function register(params) {

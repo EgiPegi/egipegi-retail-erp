@@ -3,6 +3,7 @@ import SideBarComponent from './components/SideBarComponent'
 import { BreadCrumb } from './components/BreadCrumb'
 import { Outlet, useLoaderData, useLocation, useNavigate } from 'react-router-dom'
 import { initFlowbite } from 'flowbite'
+import { ImSpinner10 } from 'react-icons/im'
 
 
 
@@ -19,6 +20,8 @@ const Layout = () => {
         initFlowbite();
     }, [pathname]); // <--- no empty array on this
 
+
+    if (!user) return <ImSpinner10 size={18} className='animate-spin mr-2 ml-0' />
 
 
     return (

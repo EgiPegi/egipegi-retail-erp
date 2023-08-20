@@ -35,12 +35,6 @@ function App() {
         let user
         const subscription = accountService.user.subscribe(x => { user = x });
         subscription.unsubscribe
-        // setTimeout(() => {
-        //   // Unsubscribes BOTH subscription and childSubscription
-        //   subscription.unsubscribe();
-        // }, 10000);
-        // const user = accountService.userValue;
-
         return ({ user })
       },
       children: [
