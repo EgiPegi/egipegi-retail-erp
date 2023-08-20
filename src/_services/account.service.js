@@ -60,7 +60,7 @@ function refreshToken() {
   return fetchWrapper
     .post(`${baseUrl}/refresh-token`, {
       refreshToken: JSON.parse(localStorage.getItem(USER_STORAGE_KEY))
-        .refreshToken,
+        ?.refreshToken,
     })
     .then((user) => {
       // publish user to subscribers and start timer to refresh token
