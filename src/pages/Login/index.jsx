@@ -1,12 +1,14 @@
 import { initFlowbite } from 'flowbite';
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { accountService, alertService } from '../../_services';
 import { Alert } from '../../components/Alert';
+import { ImSpinner10 } from "react-icons/im";
 
 const Login = () => {
     // let user = useLoaderData();
     let { pathname } = useLocation();
+    const [isLoading, setIsLoading] = useState(false)
     let navigate = useNavigate();
 
     useEffect(() => {
@@ -16,6 +18,7 @@ const Login = () => {
     }, [pathname]);
 
     function onSubmit(e) {
+        setIsLoading(true)
         e.preventDefault()
         alertService.clear();
         const email = e.target['email'].value
@@ -23,31 +26,33 @@ const Login = () => {
         console.log(email, password)
         accountService.login(email, password)
             .then(() => {
+                setIsLoading(false)
                 navigate('/')
             })
             .catch(error => {
+                setIsLoading(false)
                 alertService.error(error);
             });
     }
     return (
-        <div>
+        <div className='flex flex-col w-full min-h-screen justify-center items-center'>
             <Alert />
-            <form onSubmit={onSubmit}>
+            <div className="text-2xl font-bold mb-2 text-indigo-900">Login App</div>
+            <form onSubmit={onSubmit} className='max-w-md w-full bg-slate-50 p-10 rounded-md shadow-md'>
                 <div className="mb-6">
-                    <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-                    <input type="email" id="email" name='email' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" required />
+                    <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                    <input type="email" id="email" name='email' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500" placeholder="name@flowbite.com" required />
                 </div>
                 <div className="mb-6">
-                    <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
-                    <input type="password" id="password" name='password' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+                    <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                    <input type="password" id="password" name='password' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500" required />
                 </div>
-                {/* <div className="flex items-start mb-6">
-                    <div className="flex items-center h-5">
-                        <input id="remember" type="checkbox" value="" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" required />
-                    </div>
-                    <label htmlFor="remember" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Remember me</label>
-                </div> */}
-                <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                <button disabled={isLoading} type="submit" className="flex disabled:bg-indigo-400 text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">
+                    {
+                        isLoading && <ImSpinner10 size={18} className='animate-spin mr-2 ml-0' />
+                    }
+                    Submit
+                </button>
             </form>
 
         </div>
