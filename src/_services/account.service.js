@@ -53,12 +53,14 @@ function logout() {
 }
 
 function refreshToken() {
+  // console.log(
+  //   "refToken",
+  //   JSON.parse(localStorage.getItem(USER_STORAGE_KEY)).refreshToken
+  // );
   return fetchWrapper
     .post(`${baseUrl}/refresh-token`, {
-      refreshToken: localStorage.getItem(
-        USER_STORAGE_KEY,
-        JSON.stringify(user.refreshToken)
-      ),
+      refreshToken: JSON.parse(localStorage.getItem(USER_STORAGE_KEY))
+        .refreshToken,
     })
     .then((user) => {
       // publish user to subscribers and start timer to refresh token

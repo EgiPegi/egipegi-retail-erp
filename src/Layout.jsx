@@ -13,7 +13,7 @@ const Layout = () => {
     const nav = useNavigate()
 
     useEffect(() => {
-        console.log('test', user);
+        // console.log('test', user);
         if (!user) {
             nav('/login')
         }
