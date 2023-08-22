@@ -80,10 +80,10 @@ function Alert({ id, fade }) {
         const classes = ['alert', 'alert-dismissable'];
 
         const alertTypeClass = {
-            [AlertType.Success]: 'p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400',
-            [AlertType.Error]: 'p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400',
-            [AlertType.Info]: 'p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400',
-            [AlertType.Warning]: 'p-4 text-sm text-gray-800 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-300'
+            [AlertType.Success]: 'p-4 mb-4 text-sm text-green-50 rounded-lg bg-green-500 dark:bg-gray-800 dark:text-green-400',
+            [AlertType.Error]: 'p-4 mb-4 text-sm text-red-50 rounded-lg bg-red-500 dark:bg-gray-800 dark:text-red-400',
+            [AlertType.Info]: 'p-4 mb-4 text-sm text-blue-50 rounded-lg bg-blue-500 dark:bg-gray-800 dark:text-blue-400',
+            [AlertType.Warning]: 'p-4 text-sm text-gray-50 rounded-lg bg-gray-500 dark:bg-gray-800 dark:text-gray-300'
         }
 
         classes.push(alertTypeClass[alert.type]);
@@ -98,11 +98,11 @@ function Alert({ id, fade }) {
     if (!alerts.length) return null;
 
     return (
-        <div className="fixed top-0 right-0">
+        <div className="fixed bottom-0 right-0 z-50 animate-bounce">
             <div className="m-3">
                 {alerts.map((alert, index) =>
                     <div key={index} className={cssClasses(alert)}>
-                        <a className="close" onClick={() => removeAlert(alert)}>&times;</a>
+                        <a className="close mr-2" onClick={() => removeAlert(alert)}>&times;</a>
                         <span dangerouslySetInnerHTML={{ __html: alert.message }}></span>
                     </div>
                 )}

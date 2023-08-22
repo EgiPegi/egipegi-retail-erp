@@ -26,6 +26,9 @@ const SideBarComponent = () => {
                             </button>
                             <ul id="inventory" className='hidden py-2 space-y-2'>
                                 <li>
+                                    <NavLink to="inventory/distributors" className={({ isActive }) => isActive ? "flex items-center w-full p-2 text-slate-300 bg-indigo-200/30 transition duration-75 rounded-lg pl-11 group  dark:text-white dark:hover:bg-gray-500" : "flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-500/50 dark:text-white dark:hover:bg-gray-700"}>Distributors</NavLink>
+                                </li>
+                                <li>
                                     <NavLink to="inventory/brands" className={({ isActive }) => isActive ? "flex items-center w-full p-2 text-slate-300 bg-indigo-200/30 transition duration-75 rounded-lg pl-11 group  dark:text-white dark:hover:bg-gray-500" : "flex items-center w-full p-2 text-slate-300 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-500/50 dark:text-white dark:hover:bg-gray-700"}>Brands</NavLink>
                                 </li>
                                 <li>

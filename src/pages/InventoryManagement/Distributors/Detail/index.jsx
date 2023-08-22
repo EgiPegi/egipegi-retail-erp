@@ -1,42 +1,36 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaListAlt, FaPlus, FaSearch, FaTrash } from 'react-icons/fa'
 import { FaPencil } from 'react-icons/fa6'
 import DelModal from './DelModal'
 import AddEditModal from './AddEditModal'
 import { Link, useLocation, useParams } from 'react-router-dom'
+import { inventoryService } from '../../../../_services'
 
-const CategoryDetail = () => {
+const DistributorDetail = () => {
     let param = useParams();
     let { pathname } = useLocation();
+
+    const [datas, setDatas] = useState(null)
+    const [prepDel, setPrepDel] = useState({ isShown: false, data: null })
+    const [prepAddEdit, setPrepAddEdit] = useState({ isShown: false, isUpdate: false, data: null })
+
+    useEffect(() => {
+        if (!prepAddEdit.isShown) {
+            inventoryService.getDistributorById(param.slug).then(x => {
+                console.log(x)
+                setDatas(x)
+            });
+        }
+    }, [prepAddEdit.isShown]);
 
     // console.log(param)
     // console.log(pathname)
     return (
         <div>
             <div className="mb-5 p-5 flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row  hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                <img className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-56 md:rounded-none md:rounded-l-lg" src="https://as1.ftcdn.net/jpg/02/68/55/60/220_F_268556012_c1WBaKFN5rjRxR2eyV33znK4qnYeKZjm.jpg" alt="" />
                 <div className="flex flex-col justify-between p-4 leading-normal">
-                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Apple</h5>
-                    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Apple Inc. adalah perusahaan teknologi multinasional yang berpusat di Cupertino, California, yang merancang, mengembangkan, dan menjual barang elektronik konsumen, perangkat lunak komputer, dan layanan daring.</p>
-                    <div className="flow-root">
-                        <ul role="list" className="divide-y divide-gray-200 dark:divide-gray-700">
-                            <li className="py-3 sm:py-4">
-                                <div className="flex items-center">
-
-                                    <div className="flex-1 min-w-0">
-                                        <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-                                            PT. Apple Indonesia
-                                        </p>
-                                        <p className="text-sm text-gray-500 dark:text-gray-400">
-                                            World Trade Center II, Jl. Jenderal Sudirman No.8, RT.8/RW.3, Kuningan, Karet, Kecamatan Setiabudi, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12920
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        </ul>
-                    </div>
+                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{datas?.name}</h5>
+                    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{datas?.address}</p>
                 </div>
             </div>
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -440,4 +434,4 @@ const CategoryDetail = () => {
     )
 }
 
-export default CategoryDetail
+export default DistributorDetail

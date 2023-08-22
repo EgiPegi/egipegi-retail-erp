@@ -11,11 +11,8 @@ const AddEditModal = ({ isShown = false, isUpdate = false, data, Action }) => {
         e.preventDefault()
         alertService.clear();
         const name = e.target['name'].value
-        const description = e.target['description'].value
-        const company = e.target['company'].value
         const address = e.target['address'].value
-
-        const payload = { name, description, company, address }
+        const payload = { name, address }
         console.log(payload)
         if (isUpdate) {
             updateData(data.id, payload);
@@ -25,7 +22,7 @@ const AddEditModal = ({ isShown = false, isUpdate = false, data, Action }) => {
     }
 
     function createData(fields) {
-        inventoryService.createBrand(fields)
+        inventoryService.createDistributor(fields)
             .then(() => {
                 alertService.success('Added successfully', { keepAfterRouteChange: true });
                 setIsLoading(false)
@@ -38,7 +35,7 @@ const AddEditModal = ({ isShown = false, isUpdate = false, data, Action }) => {
     }
 
     function updateData(id, fields) {
-        inventoryService.updateBrand(id, fields)
+        inventoryService.updateDistributor(id, fields)
             .then(() => {
                 alertService.success('Update successful', { keepAfterRouteChange: true });
                 setIsLoading(false)
@@ -68,22 +65,11 @@ const AddEditModal = ({ isShown = false, isUpdate = false, data, Action }) => {
                             </div>
                             {/* <!-- Modal body --> */}
                             <div className="p-6 space-y-6">
-                                {/* name  */}
+
                                 <div className="relative z-0 w-full mb-6 group">
                                     <input type="text" name="name" id="floating_name" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " defaultValue={data?.name} required />
-                                    <label htmlFor="floating_name" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Brand Name</label>
+                                    <label htmlFor="floating_name" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Distributor Name</label>
                                 </div>
-                                {/* description  */}
-                                <div className="relative z-0 w-full mb-6 group">
-                                    <input type="text" name="description" id="floating_description" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " defaultValue={data?.description} required />
-                                    <label htmlFor="floating_description" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Description</label>
-                                </div>
-                                {/* company  */}
-                                <div className="relative z-0 w-full mb-6 group">
-                                    <input type="text" name="company" id="floating_company" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " defaultValue={data?.company} required />
-                                    <label htmlFor="floating_company" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Company</label>
-                                </div>
-                                {/* address  */}
                                 <div className="relative z-0 w-full mb-6 group">
                                     <input type="text" name="address" id="floating_address" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " defaultValue={data?.address} required />
                                     <label htmlFor="floating_address" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Address</label>

@@ -7,7 +7,7 @@ import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { alertService, inventoryService } from '../../../_services'
 import { ImSpinner10 } from 'react-icons/im'
 
-const Brands = () => {
+const Distributors = () => {
     const navigate = useNavigate()
     let param = useParams();
     let { pathname } = useLocation();
@@ -22,7 +22,7 @@ const Brands = () => {
 
     useEffect(() => {
         if (!prepAddEdit.isShown) {
-            inventoryService.getAllBrands().then(x => {
+            inventoryService.getAllDistributors().then(x => {
                 setDatas(x)
             });
         }
@@ -34,12 +34,13 @@ const Brands = () => {
                 if (x.id === id) { x.isDeleting = true; }
                 return x;
             }));
-            inventoryService.deleteBrand(id).then(() => {
+            inventoryService.deleteDistributor(id).then(() => {
                 setDatas(datas => datas.filter(x => x.id !== id));
             });
             alertService.success('Delete successfully', { keepAfterRouteChange: true });
         }
     }
+
     return (
         <>
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -65,7 +66,7 @@ const Brands = () => {
                                 </div> */}
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                Brand Name
+                                Distributors Name
                             </th>
                             <th scope="col" className="px-1 py-3 text-center">
                                 Action
@@ -73,6 +74,7 @@ const Brands = () => {
                         </tr>
                     </thead>
                     <tbody>
+
                         {
                             datas && datas.map((d, k) =>
                                 <tr key={k} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -113,6 +115,8 @@ const Brands = () => {
 
                             </tr>
                         }
+
+
 
                     </tbody>
                 </table>
@@ -163,4 +167,4 @@ const Brands = () => {
         </>
     )
 }
-export default Brands
+export default Distributors

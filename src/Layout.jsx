@@ -4,6 +4,7 @@ import { BreadCrumb } from './components/BreadCrumb'
 import { Outlet, useLoaderData, useLocation, useNavigate } from 'react-router-dom'
 import { initFlowbite } from 'flowbite'
 import { ImSpinner10 } from 'react-icons/im'
+import { Alert } from './components/Alert'
 
 
 
@@ -26,6 +27,7 @@ const Layout = () => {
 
     return (
         <>
+            <Alert />
             <SideBarComponent />
             <div className="p-4 sm:ml-64 dark:bg-gray-700">
                 <BreadCrumb pathname={pathname} />

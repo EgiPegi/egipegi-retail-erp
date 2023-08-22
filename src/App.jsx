@@ -20,6 +20,8 @@ import ProductDetail from './pages/InventoryManagement/Products/Detail';
 import { accountService } from './_services';
 import { useState } from 'react';
 import Login from './pages/Login';
+import Distributors from './pages/InventoryManagement/Distributors';
+import DistributorDetail from './pages/InventoryManagement/Distributors/Detail';
 
 
 
@@ -45,6 +47,14 @@ function App() {
         {
           path: 'inventory',
           children: [
+            {
+              path: "distributors/:page?",
+              element: <Distributors />,
+            },
+            {
+              path: "distributors/:slug/:page?",
+              element: <DistributorDetail />,
+            },
             {
               path: "brands/:page?",
               element: <Brands />,
