@@ -19,6 +19,16 @@ const Brands = () => {
     const [datas, setDatas] = useState(null)
     const [prepDel, setPrepDel] = useState({ isShown: false, data: null })
     const [prepAddEdit, setPrepAddEdit] = useState({ isShown: false, isUpdate: false, data: null })
+    const [Page, setPage] = useState(null)
+
+    useEffect(() => {
+        if (!param.page) {
+            setPage(1)
+        } else {
+            setPage(parseInt(param.page))
+        }
+    }, [param])
+
 
     useEffect(() => {
         if (!prepAddEdit.isShown) {
@@ -121,9 +131,9 @@ const Brands = () => {
                     <ul className="inline-flex -space-x-px text-sm h-8">
                         <li >
                             {
-                                parseInt(param?.page) > 1 ?
+                                Page > 1 ?
                                     (
-                                        <Link to={pathname.replace(`/${param?.page}`, '') + "/" + (parseInt(param?.page) - 1).toString()} className="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</Link>
+                                        <Link to={pathname.replace(`/${Page}`, '') + "/" + (Page - 1).toString()} className="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</Link>
                                     )
                                     :
                                     (
@@ -134,18 +144,18 @@ const Brands = () => {
                         </li>
                         {
                             Array(5).fill().map((_, k) => {
-                                const linkTo = pathname.replace(`/${param?.page}`, '') + "/" + (k + 1).toString()
+                                const linkTo = pathname.replace(`/${Page}`, '') + "/" + (k + 1).toString()
                                 // console.log(linkTo)
                                 return (<li key={k}>
-                                    <Link to={linkTo} className={param?.page === (k + 1).toString() ? "flex items-center justify-center px-3 h-8 leading-tight text-blue-700 bg-blue-700/20 border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" : "flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"}>{k + 1}</Link>
+                                    <Link to={linkTo} className={Page === k + 1 ? "flex items-center justify-center px-3 h-8 leading-tight text-blue-700 bg-blue-700/20 border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" : "flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"}>{k + 1}</Link>
                                 </li>)
                             })
                         }
                         <li>
                             {
-                                parseInt(param?.page) < 5 ?
+                                Page < 5 ?
                                     (
-                                        <Link to={pathname.replace(`/${param?.page}`, '') + "/" + (parseInt(param?.page) + 1).toString()} className="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</Link>
+                                        <Link to={pathname.replace(`/${Page}`, '') + "/" + (Page + 1).toString()} className="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</Link>
                                     )
                                     :
                                     (
