@@ -5,16 +5,25 @@ import { fetchWrapper } from "../_helpers";
 const baseUrl = `${import.meta.env.VITE_API_URI}/inventories`;
 
 export const inventoryService = {
+  // Distributors
   getAllDistributors,
   getDistributorById,
   createDistributor,
   updateDistributor,
   deleteDistributor,
+  // Brands
   getAllBrands,
   getBrandById,
   createBrand,
   updateBrand,
   deleteBrand,
+
+  //categories
+  getAllCategories,
+  getCategoryById,
+  createCategory,
+  updateCategory,
+  deleteCategory,
 };
 
 // Distributors Service
@@ -57,4 +66,27 @@ function updateBrand(id, params) {
 
 function deleteBrand(id) {
   return fetchWrapper.delete(`${baseUrl}/brand/${id}`);
+}
+
+// Categories Service
+function getAllCategories(page, limit) {
+  return fetchWrapper.get(
+    baseUrl + "/categories?page=" + page + "&limit=" + limit
+  );
+}
+
+function getCategoryById(id) {
+  return fetchWrapper.get(`${baseUrl}/category/${id}`);
+}
+
+function createCategory(params) {
+  return fetchWrapper.post(baseUrl + "/category", params);
+}
+
+function updateCategory(id, params) {
+  return fetchWrapper.put(`${baseUrl}/category/${id}`, params);
+}
+
+function deleteCategory(id) {
+  return fetchWrapper.delete(`${baseUrl}/category/${id}`);
 }
